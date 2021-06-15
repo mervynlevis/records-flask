@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    
+    {% if cart %}
+    <!-- <h3>Your Cart</h3>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>*</th>
+            </tr>
+            {% for record_id in cart %}
+            <tr>
+                <td><a href="{{ url_for('record', record_id = session['cart'][record_id]) }}">{{ names[record_id] }}</a></td>
+                <td>{{ cart[record_id] }}</td>
+                <td><a href="{{ url_for('remove_from_cart', record_id = session['cart'][record_id]) }}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table> -->
+
+        <div class="recommend">
+            {% for record_id in cart %}
+                <div class="card">
+                    <img class="editors-choice" src="../static/editors-choice.png" alt="stock record logo" >
+                    <div class="container">
+                        <h3><a href="{{ url_for('record', record_id = session['cart'][record_id]) }}">{{ names[record_id] }}</a></h3>
+                        <p>{{ cart[artist] }}</p>
+                        <p>Quantity: {{ cart[record_id] }}<p>
+                        <p><a href="{{ url_for('remove_from_cart', record_id = session['cart'][record_id]) }}">Remove</a></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <p>Total price: {{ final_total }}</p>
+        <p><a href="{{ url_for('empty_cart') }}">Checkout</a></p>
+        
+    {% else %}
+        <p>Your cart is empty!</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('stock') }}">Back to Stock</a></p>
+
+{% endblock %}

@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+} 
+
+html{
+    height: 100vh;
+}
+
+body {
+    margin-top: 0%;
+    margin: 0%;
+}
+
+h1,h2 {
+    margin: 0%;
+}
+
+/* title variable style */
+.title {
+    padding-bottom: 2%;
+}
+
+main {
+    background-image: url("cassette.jpg");
+    background-size:cover;
+    padding: 5%;
+    min-height: 77vh;
+}
+
+table, th, td {
+    margin: auto;
+    border: 1.5px solid black;
+    border-collapse: collapse;
+}
+
+td {
+    margin: 10%;
+    padding: .5em;
+}
+
+tr:nth-child(even) {    /* This was taken from w3schools */
+    background-color: lightgray;
+}
+tr:nth-child(odd) {    /* This was taken from w3schools */
+    background-color: white;
+}
+
+header, footer, nav {
+    padding: 1%;
+    background-color: #202020;
+    color: whitesmoke;
+    border-bottom: 0%;
+}
+
+/* header:hover {
+    color:whitesmoke;
+} */
+
+
+nav > a {
+    color: whitesmoke;
+    padding: 1em;
+}
+
+nav > a:hover {
+    color: rgba(255, 255, 255, 0.575);
+}
+
+nav {
+    /* background-color: slategrey; */
+    padding: 1em;
+    /* justify-content: space-between; */
+    /* margin-left: 50% */
+} 
+
+/* .title { 
+    margin-right: 70%;
+} */
+
+.topnav {
+    display: inline-block;
+    width: 100%;
+}
+
+/* footer a {
+    color:whitesmoke;
+} */
+
+
+table {
+    margin-top: 1em;
+}
+
+form {
+    display: inline;
+}
+
+#review {
+    margin-top: 10%;
+}
+
+/* NEW CSS */
+
+form {
+    width: 100%;
+    /* padding: 12px 20px; removed to resolve off centre first and last inputs */
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+input[type=text], input[type=password], input[type="submit"] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type="submit"]:hover {
+    background-color:#000;
+    color: #fff;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    border: 3px solid #555;
+  }
+
+
+/* REARRANGED NAV */
+.topnav {
+    width: 100%;
+    padding: 1%;
+}
+.topnav h1 {
+    float:left;
+    padding-left: 5%
+}
+.topnav p {
+    float: left;
+    padding-left: 1%;
+}
+
+.topnav nav {
+    float:right;
+    padding-right: 5%
+}
+
+.topnav nav a {
+    text-decoration: none;
+}
+
+.topnav .logo {
+    width: 32px;
+    border-radius: 50%;
+    border: solid white;
+    background-color: #fff;
+    float:left;
+    margin-left: 5%;
+    margin-top: .1%;
+}
+
+.record-logo-large {
+    width: 15%;
+}
+
+.title-link a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.title-link a:hover {
+    color: rgba(255, 255, 255, 0.575);
+}
+
+.social-logo {
+    width: 32px;
+    border-radius: 50%;
+    border: solid white;
+    background-color: #fff;
+    padding: 0;
+}
+
+.editors-choice {
+    width: 20%;
+    padding: 1%;
+    margin: 5%;
+    border: 2px solid black;
+    background-color: #fff;
+}
+
+/* REC CARDS */
+.card {
+    border: 2px solid black;
+    margin: 2%;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+}
+
+.card:hover {
+    background-color: slategrey;
+}
+
+.recommend {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.stock {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 1000px) {
+    .recommend {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    input[type=text], input[type=password], input[type="submit"] {
+        width: 80%;
+    }
+    header {
+        display: block;
+    }
+
+    .topnav h1 {
+        float:center;
+    }
+    .topnav p {
+        float: center;
+        padding-left: 20%;
+    }
+    
+    .topnav nav {
+        float:center;
+        padding-right: 20%
+    }
+    
+    .topnav nav a {
+        text-decoration: none;
+    }
+    
+    .record-logo-large {
+        width: 30%;
+    }
+    .editors-choice {
+        width: 40%;
+    }
+}
+
+
+/* <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */

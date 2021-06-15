@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>User ID: {{ g.user }}</h2>
+
+    {% for date in register_date %}
+        <p>Signup Date: {{ date[0] }}</p> <!--this 0 method was found on stack overflow-->
+    {% endfor %}
+
+    {% if orders %}
+    {% for order in orders %}
+    <h4>Your orders</h4>
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>User ID</th>
+                <th>Order</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+
+            <tr>
+                <td>{{ order["order_id"] }}</td>
+                <td>{{ order["user_id"] }}</td>
+                <td>{{ order["order_content"] }}</td>
+                <td>{{ order["price"] }}</td>
+                <td>{{ order["order_date"] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No orders yet</p>
+    {% endif %}
+
+    {% if reviews %}
+    {% for record in reviews %}
+    <h4>Your reviews</h4>
+        <table>
+            <tr>
+                <th>Record ID</th>
+                <th>Artist</th>
+                <th>Title</th>
+                <th>User</th>
+                <th>Review</th>
+                <th>Stars</th>
+            </tr>
+            <tr>
+                <td>{{ record["record_id"] }}</td>
+                <td>{{ record["artist"] }}</td>
+                <td>{{ record["title"] }}</td>
+                <td>{{ record["user_id"] }}</td>
+                <td>{{ record["review"] }}</td>
+                <td>{{ record["stars"] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+            <p>No reviews yet</p>
+    {% endif %}
+
+    <a href= "{{ url_for('delete_your_account', user_id=g.user ) }}">Delete account</a>
+
+
+{% endblock %}

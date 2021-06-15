@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <!-- <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Length</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Format</th>
+            <th>Info</th>
+            <th>Add to cart</th>
+        </tr> -->
+<!--         
+        {% for record in stock %}
+            <tr>
+                <td>{{ record["record_id"] }}</td>
+                <td>{{ record["title"] }}</td>
+                <td>{{ record["artist"] }}</td>
+                <td>{{ record["length"] }}</td>
+                <td>{{ record["price"] }}</td>
+                <td>{{ record["stock"] }}</td>
+                <td>{{ record["format"] }}</td>
+                <td><a href="{{ url_for('record', record_id=record['record_id'] ) }}">Details</a></td>
+                <td><a href="{{ url_for('add_to_cart', record_id=record['record_id']) }}">Add to cart</a></td>
+            </tr>
+        {% endfor %}
+    </table> -->
+    <div class="recommend">
+        {% for record in stock %}
+            <a href="{{ url_for('record', record_id=record['record_id'] ) }}"><div class="card">
+                <img class="editors-choice" src="static/editors-choice.png" alt="stock record logo" >
+                <div class="container">
+                    <h3><b> {{ record["artist"] }}</b></h3>
+                    <p>{{ record["title"] }}</p>
+                    <p>{{ record["price"]}}</p>
+                    <p>Only {{ record["stock"] }} left</p>
+                </div>
+            </div></a>
+        {% endfor %}
+    </div>
+
+    
+    <table>
+        {% for record in out_of_stock %}
+        <caption><h3>Out of stock: check back soon!</h3></caption>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Length</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Format</th>
+        </tr>
+            <tr>
+                <td>{{ record["record_id"] }}</td>
+                <td>{{ record["title"] }}</td>
+                <td>{{ record["artist"] }}</td>
+                <td>{{ record["length"] }}</td>
+                <td>{{ record["price"] }}</td>
+                <td>{{ record["stock"] }}</td>
+                <td>{{ record["format"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

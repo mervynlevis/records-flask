@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <img class="record-logo-large" src="static/vinyl.svg" alt="record-logo-large">
+
+
+    <p>{{ greeting }}</p>
+    {% if g.user %}
+        <p>Hello, {{ g.user }}</p>
+    {% endif %}
+
+    <form action = "" method ="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.search.label }}
+        {{ form.search() }}
+        {% for error in form.search.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+    <br/>
+
+    {% if stock %}
+        <table>
+            <caption><b>{{ caption }}</b></caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Length</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Format</th>
+                </tr>
+            {% for record in stock %}
+                <tr>
+                    <td>{{ record["record_id"] }}</td>
+                    <td>{{ record["title"] }}</td>
+                    <td>{{ record["artist"] }}</td>
+                    <td>{{ record["length"] }}</td>
+                    <td>{{ record["price"] }}</td>
+                    <td>{{ record["stock"] }}</td>
+                    <td>{{ record["format"] }}</td>
+                    <td><a href="{{ url_for('record', record_id=record['record_id'] ) }}">See Details</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+
+    <p><i>Editors Choice:</i> john bon pony, music band, bean</p>
+    <p>Search by artist, or check the stock page for the full stock.</p>
+    <p>Login to check your profile to see your past orders and reviews.</p>
+    <div class="recommend">
+
+
+    {% if rec_record_id %}
+        {% for record in rec_record_id %}
+        <a href="{{ url_for('record', record_id=record['record_id'] ) }}"><div class="card">
+            <img class="editors-choice" src="static/editors-choice.png" alt="editors choice record logo" >
+            <div class="container">
+                <h3><b> {{ record["artist"] }}</b></h3>
+                <p>{{ record["title"] }}</p>
+                <p>{{ record["price"]}}</p>
+            </div>
+        </div></a>
+        {% endfor %}
+    {% endif %}
+
+    </div>
+    
+{% endblock %}             

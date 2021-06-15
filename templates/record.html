@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1><a href="{{ url_for('artist', artist=records['artist']) }}">{{ records["artist"] }}</a></h1>  
+    </br>  
+    <h1>{{ records["title"] }} || {{ records["artist"] }}</h1>
+
+    <div>
+        <img class="editors-choice" src="../static/editors-choice.png" alt="stock record logo" >
+        <div class="container">
+            <h3><b> {{ records["artist"] }}</b></h3>
+            <p>{{ records["title"] }}</p>
+            <p>{{ records["format"] }}</p>
+            <p>{{ records["price"]}}</p>
+            <p>Only {{ records["stock"] }} left</p>
+        </div>
+    </div>
+
+    <p>
+        <a href="{{ url_for('add_to_cart', record_id=records['record_id']) }}">Add to cart</a>
+    </p>
+
+    {% if reviews %}
+        <table>
+            <caption><h3>Reviews</h3></caption>
+            <tr>
+                <th>Record ID</th>
+                <th>User</th>
+                <th>Review</th>
+                <th>Stars</th>
+            </tr>
+        {% for record in reviews %}
+            <tr>
+                <td>{{ record["record_id"] }}</td>
+                <td>{{ record["user_id"] }}</td>
+                <td>{{ record["review"] }}</td>
+                <td>{{ record["stars"] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        
+    {% else %}
+        <p>No reviews for this record yet!</p>
+    {% endif %}
+
+    <form id="reviewform" action = "" method ="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.review.label }}
+        {{ form.review() }}
+        {% for error in form.review.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.hidden_tag() }}
+        {{ form.stars.label }}
+        {{ form.stars() }}
+        {% for error in form.stars.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+        
+        <br/>
+
+
+{% endblock %}

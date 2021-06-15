@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet"  href="{{ url_for('static', filename = 'styles.css') }}"/>
+        <link rel="icon" href="../static/favicon.ico">
+        <title> Mervs Music </title>
+    </head>
+    <body>
+        <header class="topnav">
+            <a href="{{ url_for('start') }}"><img class="logo" src="../static/vinyl-record.png" alt="record-logo"></a>
+            <h1 class="title-link"><a href="{{ url_for('start') }}">Mervs Records</a></h1>
+            <nav> 
+                
+        {% if g.user %}
+                <a href="{{ url_for('profile') }}">Profile</a>
+                <a href="{{ url_for('stock') }}">Records</a>
+                <a href="{{ url_for('cart') }}">Cart</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+                <a href="{{ url_for('register') }}">Register</a>
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('stock') }}">Records</a>
+                <a href="{{ url_for('cart') }}">Cart</a>
+        {% endif %}
+            </nav>
+        </header>
+
+        <main>
+            <h1 class="title">{{ title }}</h1>
+        {% block main_content %}
+        {% endblock %}
+        <br/>
+        </main>
+
+        <footer>
+            {% if g.user %}
+            <p><b>User:</b> {{ g.user }}</p>
+            <p><a href="{{ url_for('logout') }}">Logout</a></p>
+            {% endif %}
+            <nav>
+                <a href="https://github.com/mervynlevis"><img class="social-logo" src="../static/github.png" alt="Author gitHub"></a>
+                <a href="https://www.linkedin.com/in/mervyn-levis/"><img class="social-logo" src="../static/linkedin.png" alt="Author linkedin"></a>
+            </nav>
+            <p>Copyright © Mervyn Levis 2021</p>
+            <!-- <a href="{{ url_for('admin') }}">Admin</a> -->
+        </footer>
+    </body>
+    </html>
